@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: cbf9fdec0797
-Revises: f43240703a71
-Create Date: 2024-11-25 05:15:41.515875
+Revision ID: 88e4456dd1ba
+Revises: b34e867e6133
+Create Date: 2024-11-26 07:07:42.279221
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'cbf9fdec0797'
-down_revision: Union[str, None] = 'f43240703a71'
+revision: str = '88e4456dd1ba'
+down_revision: Union[str, None] = 'b34e867e6133'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -23,12 +23,11 @@ def upgrade() -> None:
     op.create_table('coupons',
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('type', sa.Enum('CART_WISE', 'PRODUCT_WISE', 'BXGY', name='coupontype'), nullable=False),
-    sa.Column('discount_details', sa.JSON(), nullable=False),
-    sa.Column('valid_from', sa.Date(), nullable=False),
-    sa.Column('valid_to', sa.Date(), nullable=False),
+    sa.Column('valid_from', sa.DateTime(), nullable=False),
+    sa.Column('valid_to', sa.DateTime(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=True),
-    sa.Column('created_at', sa.Date(), nullable=False),
-    sa.Column('updated_at', sa.Date(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
