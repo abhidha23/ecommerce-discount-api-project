@@ -14,6 +14,7 @@ def create_coupon(db: Session, request:CouponCreateSchema):
             discount_details=request.discount_details,
             valid_from=valid_from,
             valid_to=valid_to,
+            created_at = datetime.utcnow(),
             is_active=request.is_active
         )
         db.add(new_coupon)
