@@ -1,5 +1,6 @@
 from logging.config import fileConfig
 from app.models.coupon import Coupon
+from app.models.coupon_discount_details_model import CouponDiscountDetails
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from app.database import Base
